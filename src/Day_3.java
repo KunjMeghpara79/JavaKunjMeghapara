@@ -14,12 +14,7 @@ public class Day_3 {
 
         for (int i = 1; i <= 250; i++) {
 
-            Book b = new Book(
-                    "Book " + i,
-                    "Author " + (i % 20),
-                    String.format("BK%04d", i),
-                    i % 2 == 0
-            );
+            Book b = new Book("Book " + i, "Author " + (i % 20), String.format("BK%04d", i), i % 2 == 0);
 
             list.add(b);
             authors.add(b.getAuthor());
@@ -28,12 +23,7 @@ public class Day_3 {
 
         for (int i = 1; i <= 250; i++) {
 
-            Novel n = new Novel(
-                    "Novel " + i,
-                    "Author " + (i % 20),
-                    String.format("NV%04d", i),
-                    i % 2 != 0
-            );
+            Novel n = new Novel("Novel " + i, "Author " + (i % 20), String.format("NV%04d", i), i % 2 != 0);
 
             list.add(n);
             authors.add(n.getAuthor());
@@ -44,12 +34,7 @@ public class Day_3 {
         System.out.println("Total Items : " + list.size());
         System.out.println("Unique Authors : " + authors.size());
 
-        Book newBook = new Book(
-                "Atomic Habits",
-                "James Clear",
-                "BK9999",
-                true
-        );
+        Book newBook = new Book("Atomic Habits", "James Clear", "BK9999", true);
 
         list.add(newBook);
         authors.add(newBook.getAuthor());
