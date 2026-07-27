@@ -13,11 +13,16 @@ class Library{
         this.list = list;
     }
 }
-class Book implements lib_items{
+class Book implements lib_items,Comparable<Book>{
     private String title;
     private String author;
     private String sr_no;
     private boolean available;
+
+    @Override
+    public int compareTo(Book other) {
+        return this.getSr_no().compareTo(other.getSr_no());
+    }
 
     Book(String title,String author,String sr_no,boolean available){
         if(sr_no.length() != 6){
@@ -44,6 +49,10 @@ class Book implements lib_items{
 
     public String getSr_no() {
     return this.sr_no;
+    }
+
+    public String getTitle() {
+        return this.title;
     }
 }
 class Novel implements lib_items{
@@ -79,6 +88,7 @@ class Novel implements lib_items{
         return this.author;
     }
 }
+// use all the classes in the current folder and do the following tasks in the Day_4.java file
 
 public class Day_1_2 {
     public static void main(String[] args) {
