@@ -13,18 +13,14 @@ public class Day_3 {
         Library lib = new Library("Public Library", list);
 
         for (int i = 1; i <= 250; i++) {
-
             Book b = new Book("Book " + i, "Author " + (i % 20), String.format("BK%04d", i), i % 2 == 0);
-
             list.add(b);
             authors.add(b.getAuthor());
             map.put(b.getSr_no(), b);
         }
 
         for (int i = 1; i <= 250; i++) {
-
             Novel n = new Novel("Novel " + i, "Author " + (i % 20), String.format("NV%04d", i), i % 2 != 0);
-
             list.add(n);
             authors.add(n.getAuthor());
             map.put(n.getSr_no(), n);
@@ -54,30 +50,24 @@ public class Day_3 {
         boolean found = false;
 
         /*
-         * Slow Search (O(n))
-         * Checks every item one by one.
-         * Faster way: Use HashMap because searching by key
-         * takes O(1) time on average.
+         Slow Search (O(n))
+         Checks every item one by one.
+         Faster way: Use HashMap because searching by key
+         takes O(1) time on average.
          */
 
         System.out.println("\nLinear Search:");
 
         for (lib_items item : list) {
-
             if (item instanceof Book) {
-
                 Book b = (Book) item;
-
                 if (b.getSr_no().equals(search)) {
                     b.ShowDetail();
                     found = true;
                     break;
                 }
-
             } else if (item instanceof Novel) {
-
                 Novel n = (Novel) item;
-
                 if (n.getSr_no().equals(search)) {
                     n.ShowDetail();
                     found = true;
@@ -85,21 +75,16 @@ public class Day_3 {
                 }
             }
         }
-
         if (!found) {
             System.out.println("Item Not Found");
         }
-
         System.out.println("\nHashMap Search:");
-
         lib_items result = map.get(search);
-
         if (result != null) {
             result.ShowDetail();
         } else {
             System.out.println("Item Not Found");
         }
-
 
         System.out.println("\nComparison:");
         System.out.println("1. ArrayList stores all library items and maintains insertion order.");
