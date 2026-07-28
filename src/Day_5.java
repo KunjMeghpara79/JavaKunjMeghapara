@@ -62,6 +62,7 @@ record NovelRec(String title, String author, String serialNo, boolean available)
         System.out.println("Author      : " + author);
         System.out.println("Serial No   : " + serialNo);
         System.out.println("Status      : " + (available ? "Available" : "Not Available"));
+
     }
 }
 
@@ -115,12 +116,7 @@ public class Day_5 {
         System.out.println(b1);
 
         System.out.println("\n===== equals() Demo =====");
-        BookRec b3 = new BookRec(
-                "Atomic Habits",
-                "James Clear",
-                "BK1001",
-                true
-        );
+        BookRec b3 = new BookRec("Atomic Habits", "James Clear", "BK1001", true);
 
         System.out.println("b1.equals(b3) = " + b1.equals(b3));
 

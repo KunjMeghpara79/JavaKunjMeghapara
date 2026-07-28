@@ -6,9 +6,9 @@ public class Day_3 {
 
     public static void main(String[] args) {
 
-        ArrayList<lib_items> list = new ArrayList<>();
+        ArrayList<Library_items> list = new ArrayList<>();
         HashSet<String> authors = new HashSet<>();
-        HashMap<String, lib_items> map = new HashMap<>();
+        HashMap<String, Library_items> map = new HashMap<>();
 
         Library lib = new Library("Public Library", list);
 
@@ -38,7 +38,7 @@ public class Day_3 {
 
         System.out.println("\nBK9999 Added Successfully.");
 
-        lib_items removed = map.remove("BK0100");
+        Library_items removed = map.remove("BK0100");
 
         if (removed != null) {
             list.remove(removed);
@@ -58,7 +58,7 @@ public class Day_3 {
 
         System.out.println("\nLinear Search:");
 
-        for (lib_items item : list) {
+        for (Library_items item : list) {
             if (item instanceof Book) {
                 Book b = (Book) item;
                 if (b.getSr_no().equals(search)) {
@@ -79,7 +79,7 @@ public class Day_3 {
             System.out.println("Item Not Found");
         }
         System.out.println("\nHashMap Search:");
-        lib_items result = map.get(search);
+        Library_items result = map.get(search);
         if (result != null) {
             result.ShowDetail();
         } else {

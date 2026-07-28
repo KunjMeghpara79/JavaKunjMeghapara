@@ -1,19 +1,15 @@
 import java.util.ArrayList;
 import java.util.List;
 
-interface lib_items{
-    void ShowDetail();
-}
-
 class Library{
     private String name;
-    private List<lib_items> list;
-    Library(String name,List<lib_items> list){
+    private List<Library_items> list;
+    Library(String name,List<Library_items> list){
         this.name = name;
         this.list = list;
     }
 }
-class Book implements lib_items,Comparable<Book>{
+class Book implements Library_items,Comparable<Book>{
     private String title;
     private String author;
     private String sr_no;
@@ -34,6 +30,7 @@ class Book implements lib_items,Comparable<Book>{
             this.available = available;
         }
     }
+
     @Override
     public void ShowDetail() {
         System.out.println("Book Details are as follows...");
@@ -42,6 +39,7 @@ class Book implements lib_items,Comparable<Book>{
         System.out.println("Serial number  :  "+this.sr_no);
         System.out.println("Status         :  "+((this.available) ? "Available" : "Not available"));
     }
+
 
     public String getAuthor() {
         return this.author;
@@ -54,8 +52,10 @@ class Book implements lib_items,Comparable<Book>{
     public String getTitle() {
         return this.title;
     }
+
+
 }
-class Novel implements lib_items{
+class Novel implements Library_items {
     private String title;
     private String author;
     private String sr_no;
@@ -80,6 +80,8 @@ class Novel implements lib_items{
         System.out.println("Status          :  "+((this.available) ? "Available" : "Not available"));
     }
 
+
+
     public String getSr_no() {
         return this.sr_no;
     }
@@ -92,7 +94,7 @@ class Novel implements lib_items{
 
 public class Day_1_2 {
     public static void main(String[] args) {
-        List<lib_items> list = new ArrayList<>();
+        List<Library_items> list = new ArrayList<>();
 
         Library lib = new Library("Public Library", list);
 
@@ -111,7 +113,7 @@ public class Day_1_2 {
 
         System.out.println("===== Library Items =====\n");
 
-        for (lib_items item : list) {
+        for (Library_items item : list) {
             item.ShowDetail();
             System.out.println("----------------------------");
         }
