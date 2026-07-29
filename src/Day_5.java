@@ -12,12 +12,10 @@ public class Day_5 {
         BookRec b2 = new BookRec("48 Laws of Power", "Robert Greene", "BK1002", false);
         NovelRec n1 = new NovelRec("The Diary of a CEO", "Steven Bartlett", "NV2001", true);
         NovelRec n2 = new NovelRec("The Laws of Human Nature", "Robert Greene", "NV2002", false);
-
         items.add(b1);
         items.add(b2);
         items.add(n1);
         items.add(n2);
-
         printLibraryItems(library);
         sortAndPrintBooks(b1, b2);
         demonstrateRecordMethods(b1);

@@ -11,9 +11,7 @@ public class Day_4 {
 
     public static void main(String[] args) {
         List<Book> books = generateBooks();
-
         printBooksByAuthor(books);
-
         sortBySerial(books);
         sortByTitle(books);
         sortByAuthor(books);
@@ -22,16 +20,13 @@ public class Day_4 {
     private static List<Book> generateBooks() {
         List<Book> books = new ArrayList<>();
         for (int i = 1; i <= ITEM_COUNT; i++) {
-            books.add(new Book("Book " + i, "Author " + (i % 20),
-                    String.format("BK%04d", i), i % 2 == 0));
+            books.add(new Book("Book " + i, "Author " + (i % 20), String.format("BK%04d", i), i % 2 == 0));
         }
         return books;
     }
 
     private static void printBooksByAuthor(List<Book> books) {
-        Map<String, List<Book>> booksByAuthor = books.stream()
-                .collect(Collectors.groupingBy(Book::getAuthor));
-
+        Map<String, List<Book>> booksByAuthor = books.stream().collect(Collectors.groupingBy(Book::getAuthor));
         booksByAuthor.forEach((author, authorBooks) -> {
             System.out.println(author);
             System.out.println("Total Books : " + authorBooks.size());

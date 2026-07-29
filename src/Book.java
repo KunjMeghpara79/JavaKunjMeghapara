@@ -46,4 +46,5 @@ public class Book implements Library_items, Comparable<Book> {
     public boolean isAvailable() {
         return available;
     }
+
 }

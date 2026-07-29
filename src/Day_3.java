@@ -22,8 +22,7 @@ public class Day_3 {
 
         printSummary(library, authors);
 
-        addBook(items, authors, itemsBySerial,
-                new Book("Atomic Habits", "James Clear", "BK9999", true));
+        addBook(items, authors, itemsBySerial, new Book("Atomic Habits", "James Clear", "BK9999", true));
         System.out.println("\nBK9999 Added Successfully.");
 
         removeBySerial(items, itemsBySerial, SERIAL_TO_REMOVE);
@@ -34,24 +33,18 @@ public class Day_3 {
         printComparison();
     }
 
-    private static void populateBooks(List<Library_items> items,
-                                      Set<String> authors,
-                                      Map<String, Library_items> map) {
+    private static void populateBooks(List<Library_items> items, Set<String> authors, Map<String, Library_items> map) {
         for (int i = 1; i <= ITEM_COUNT; i++) {
-            Book book = new Book("Book " + i, "Author " + (i % 20),
-                    String.format("BK%04d", i), i % 2 == 0);
+            Book book = new Book("Book " + i, "Author " + (i % 20), String.format("BK%04d", i), i % 2 == 0);
             items.add(book);
             authors.add(book.getAuthor());
             map.put(book.getSr_no(), book);
         }
     }
 
-    private static void populateNovels(List<Library_items> items,
-                                       Set<String> authors,
-                                       Map<String, Library_items> map) {
+    private static void populateNovels(List<Library_items> items, Set<String> authors, Map<String, Library_items> map) {
         for (int i = 1; i <= ITEM_COUNT; i++) {
-            Novel novel = new Novel("Novel " + i, "Author " + (i % 20),
-                    String.format("NV%04d", i), i % 2 != 0);
+            Novel novel = new Novel("Novel " + i, "Author " + (i % 20), String.format("NV%04d", i), i % 2 != 0);
             items.add(novel);
             authors.add(novel.getAuthor());
             map.put(novel.getSr_no(), novel);
@@ -64,18 +57,13 @@ public class Day_3 {
         System.out.println("Unique Authors : " + authors.size());
     }
 
-    private static void addBook(List<Library_items> items,
-                                Set<String> authors,
-                                Map<String, Library_items> map,
-                                Book book) {
+    private static void addBook(List<Library_items> items, Set<String> authors, Map<String, Library_items> map, Book book) {
         items.add(book);
         authors.add(book.getAuthor());
         map.put(book.getSr_no(), book);
     }
 
-    private static void removeBySerial(List<Library_items> items,
-                                       Map<String, Library_items> map,
-                                       String serial) {
+    private static void removeBySerial(List<Library_items> items, Map<String, Library_items> map, String serial) {
         Library_items removed = map.remove(serial);
         if (removed != null) {
             items.remove(removed);
