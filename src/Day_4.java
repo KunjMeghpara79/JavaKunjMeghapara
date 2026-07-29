@@ -1,52 +1,66 @@
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Day_4 {
 
+    private static final int ITEM_COUNT = 250;
+    private static final int PREVIEW_COUNT = 10;
+
     public static void main(String[] args) {
+        List<Book> books = generateBooks();
 
-        ArrayList<Book> books = new ArrayList<>();
+        printBooksByAuthor(books);
 
-        for (int i = 1; i <= 250; i++) {
-            books.add(new Book("Book " + i, "Author " + (i % 20), String.format("BK%04d", i), i % 2 == 0));
+        sortBySerial(books);
+        sortByTitle(books);
+        sortByAuthor(books);
+    }
+
+    private static List<Book> generateBooks() {
+        List<Book> books = new ArrayList<>();
+        for (int i = 1; i <= ITEM_COUNT; i++) {
+            books.add(new Book("Book " + i, "Author " + (i % 20),
+                    String.format("BK%04d", i), i % 2 == 0));
         }
+        return books;
+    }
 
-        Map<String, List<Book>> map = new HashMap<>();
+    private static void printBooksByAuthor(List<Book> books) {
+        Map<String, List<Book>> booksByAuthor = books.stream()
+                .collect(Collectors.groupingBy(Book::getAuthor));
 
-        for (Book b : books) {
-            map.putIfAbsent(b.getAuthor(), new ArrayList<>());
-            map.get(b.getAuthor()).add(b);
-        }
-
-        for (Map.Entry<String, List<Book>> entry : map.entrySet()) {
-            System.out.println(entry.getKey());
-            System.out.println("Total Books : " + entry.getValue().size());
+        booksByAuthor.forEach((author, authorBooks) -> {
+            System.out.println(author);
+            System.out.println("Total Books : " + authorBooks.size());
             System.out.println();
-        }
+        });
+    }
 
+    private static void sortBySerial(List<Book> books) {
         Collections.sort(books);
-        //sorted by serial numbers
+        System.out.println("===== Sorted by Serial Number =====");
+        printPreview(books);
+    }
 
-        for (int i = 0; i < 10; i++) {
-            books.get(i).ShowDetail();
-        }
-        // sorted by title
+    private static void sortByTitle(List<Book> books) {
         books.sort(new TitleComparator());
-        for (int i = 0; i < 10; i++) {
-            books.get(i).ShowDetail();
-        }
+        System.out.println("===== Sorted by Title =====");
+        printPreview(books);
+    }
 
-        // sorted by their author's name
-
+    private static void sortByAuthor(List<Book> books) {
         books.sort(new AuthorComparator());
-        for (int i = 0; i < 10; i++) {
+        System.out.println("===== Sorted by Author =====");
+        printPreview(books);
+    }
+
+    private static void printPreview(List<Book> books) {
+        for (int i = 0; i < PREVIEW_COUNT; i++) {
             books.get(i).ShowDetail();
         }
+        System.out.println();
     }
 }
-
-

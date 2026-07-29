@@ -1,35 +1,25 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
-// use all the classes in the current folder and do the following tasks in the Day_4.java file
-
 public class Day_1_2 {
+
     public static void main(String[] args) {
-        List<Library_items> list = new ArrayList<>();
+        List<Library_items> items = new ArrayList<>();
+        Library library = new Library("Public Library", items);
 
-        Library lib = new Library("Public Library", list);
+        items.add(new Book("Atomic Habits", "James Clear", "BK1001", true));
+        items.add(new Book("48 Laws of Power", "Robert Greene", "BK1002", false));
+        items.add(new Novel("The Diary of a CEO", "Steven Bartlett", "NV2001", true));
+        items.add(new Novel("The Laws of Human Nature", "Robert Greene", "NV2002", false));
 
-        Book b1 = new Book("Atomic Habits", "James Clear", "BK1001", true);
-        Book b2 = new Book("48 Laws of power", "Robert Green", "BK1002", false);
+        printLibraryItems(library);
+    }
 
-        Novel n1 = new Novel("The diary of a CEO", "Steven Bartlett", "NV2001", true);
-        Novel n2 = new Novel("The laws of human nature", "Robert Green", "NV2002", false);
-
-
-        list.add(b1);
-        list.add(b2);
-        list.add(n1);
-        list.add(n2);
-
-
-        System.out.println("===== Library Items =====\n");
-
-        for (Library_items item : list) {
+    private static void printLibraryItems(Library library) {
+        System.out.println("===== " + library.getName() + " =====\n");
+        for (Library_items item : library.getList()) {
             item.ShowDetail();
-            System.out.println("----------------------------");
+            System.out.println("------------------------------");
         }
     }
 }
