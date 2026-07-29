@@ -2,77 +2,20 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-interface LibItemRecord {
-    void showDetail();
-}
 
-class LibraryRecord {
-    private String name;
-    private List<LibItemRecord> items;
 
-    LibraryRecord(String name, List<LibItemRecord> items) {
-        this.name = name;
-        this.items = items;
-    }
 
-    public String getName() {
-        return name;
-    }
 
-    public List<LibItemRecord> getItems() {
-        return items;
-    }
-}
 
-record BookRec(String title, String author, String serialNo, boolean available) implements LibItemRecord, Comparable<BookRec> {
 
-    public BookRec {
-        if (serialNo.length() != 6) {
-            throw new IllegalArgumentException("Invalid Serial Number!");
-        }
-    }
-
-    @Override
-    public void showDetail() {
-        System.out.println("Book Details");
-        System.out.println("Title       : " + title);
-        System.out.println("Author      : " + author);
-        System.out.println("Serial No   : " + serialNo);
-        System.out.println("Status      : " + (available ? "Available" : "Not Available"));
-    }
-
-    @Override
-    public int compareTo(BookRec other) {
-        return serialNo.compareTo(other.serialNo);
-    }
-}
-
-record NovelRec(String title, String author, String serialNo, boolean available) implements LibItemRecord {
-
-    public NovelRec {
-        if (serialNo.length() != 6) {
-            throw new IllegalArgumentException("Invalid Serial Number!");
-        }
-    }
-
-    @Override
-    public void showDetail() {
-        System.out.println("Novel Details");
-        System.out.println("Title       : " + title);
-        System.out.println("Author      : " + author);
-        System.out.println("Serial No   : " + serialNo);
-        System.out.println("Status      : " + (available ? "Available" : "Not Available"));
-
-    }
-}
 
 public class Day_5 {
 
     public static void main(String[] args) {
 
-        List<LibItemRecord> list = new ArrayList<>();
+        List<Library_items> list = new ArrayList<>();
 
-        LibraryRecord library = new LibraryRecord("Public Library", list);
+        LibraryRec library = new LibraryRec("Public Library", list);
 
         BookRec b1 = new BookRec("Atomic Habits", "James Clear", "BK1001", true);
 
@@ -89,8 +32,8 @@ public class Day_5 {
 
         System.out.println("===== " + library.getName() + " =====\n");
 
-        for (LibItemRecord item : library.getItems()) {
-            item.showDetail();
+        for (Library_items item : library.getItems()) {
+            item.ShowDetail();
             System.out.println("------------------------------");
         }
 
