@@ -1,24 +1,20 @@
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.*;
 
  class sample {
-   public static void main() {
-        List<Integer> list = Arrays.asList(1,2,5,6,10,11,20);
-        Stream<Integer> stream = list.stream();
+   public static void main() throws ScriptException {
+       System.out.println("This is sample calculator :   ");
+       ScriptEngine engine = new ScriptEngineManager().getEngineByName("JavaScript");
+       Scanner sc = new Scanner(System.in);
+       System.out.print("Enter your expression : ");
+       String s = sc.nextLine();
+       System.out.println(" = " + engine.eval(s));
 
-        stream
-                .filter(n -> n <= 10)
-                .map(n -> n*n)
-                .distinct()
-                .sorted()
-                .forEach(n -> {
-                    System.out.print(n - 1);
-                    System.out.print(" ");
-                    System.out.print(n);
-                    System.out.print(" ");
-                    System.out.println(n+1);
-                });
 
     }
 }
