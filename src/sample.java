@@ -12,7 +12,13 @@ import java.util.stream.*;
                 .map(n -> n*n)
                 .distinct()
                 .sorted()
-                .forEach(System.out::println);
+                .forEach(n -> {
+                    System.out.print(n - 1);
+                    System.out.print(" ");
+                    System.out.print(n);
+                    System.out.print(" ");
+                    System.out.println(n+1);
+                });
 
     }
 }
