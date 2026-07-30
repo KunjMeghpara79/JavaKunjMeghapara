@@ -18,7 +18,7 @@ public class Day_3 {
         Library library = new Library("Public Library", items);
 
         populateBooks(items, authors, itemsBySerial);
-        // this method call creates one new instance of a book and add it it list,set and map.
+        // this method call creates one new instance of a book and add it in the list,set and map.
 
         populateNovels(items, authors, itemsBySerial);
         //this method call do the same for novels
@@ -35,7 +35,6 @@ public class Day_3 {
 
         printComparison();
     }
-
     private static void populateBooks(List<Library_items> items, Set<String> authors, Map<String, Library_items> map) {
         for (int i = 1; i <= ITEM_COUNT; i++) {
             Book book = new Book("Book " + i, "Author " + (i % 20), String.format("BK%04d", i), i % 2 == 0);
@@ -118,7 +117,6 @@ public class Day_3 {
             System.err.println("Item Not Found: " + serial);
         }
     }
-
     private static void printComparison() {
         System.out.println("\nComparison:");
         System.out.println("1. ArrayList stores all library items and maintains insertion order.");
