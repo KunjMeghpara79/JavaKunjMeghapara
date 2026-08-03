@@ -5,7 +5,7 @@ import java.util.List;
 public class Day5 {
 
     public static void main(String[] args) {
-        List<LibrarItems> items = new ArrayList<>();
+        List<LibraryItems> items = new ArrayList<>();
         LibraryRec library = new LibraryRec("Public Library", items);
 
         BookRec b1 = new BookRec("Atomic Habits", "James Clear", "BK1001", true);
@@ -26,7 +26,7 @@ public class Day5 {
 
     private static void printLibraryItems(LibraryRec library) {
         System.out.println("===== " + library.getName() + " =====\n");
-        for (LibrarItems item : library.getItems()) {
+        for (LibraryItems item : library.getItems()) {
             item.ShowDetail();
             System.out.println("------------------------------");
         }

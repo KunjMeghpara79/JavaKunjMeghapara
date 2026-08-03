@@ -3,9 +3,9 @@ import java.util.List;
 public class Library {
 
     private String name;
-    private List<LibrarItems> list;
+    private List<LibraryItems> list;
 
-    public Library(String name, List<LibrarItems> list) {
+    public Library(String name, List<LibraryItems> list) {
         this.name = name;
         this.list = list;
     }
@@ -14,11 +14,11 @@ public class Library {
         return name;
     }
 
-    public List<LibrarItems> getList() {
+    public List<LibraryItems> getList() {
         return list;
     }
 
-    public void addItem(LibrarItems item) {
+    public void addItem(LibraryItems item) {
         list.add(item);
     }
 }

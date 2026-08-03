@@ -1,4 +1,4 @@
-public class Book implements LibrarItems, Comparable<Book> {
+public class Book implements LibraryItems, Comparable<Book> {
 
     private String title;
     private String author;

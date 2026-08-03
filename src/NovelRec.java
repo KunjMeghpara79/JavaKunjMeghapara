@@ -1,4 +1,4 @@
-record NovelRec(String title, String author, String serialNo, boolean available) implements LibrarItems {
+record NovelRec(String title, String author, String serialNo, boolean available) implements LibraryItems {
 
     public NovelRec {
         if (serialNo.length() != 6) {

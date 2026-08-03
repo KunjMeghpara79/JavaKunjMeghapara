@@ -1,4 +1,4 @@
-class Novel implements LibrarItems {
+class Novel implements LibraryItems {
     private String title;
     private String author;
     private String sr_no;

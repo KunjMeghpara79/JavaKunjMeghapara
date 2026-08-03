@@ -12,9 +12,9 @@ public class Day3 {
     private static final String SERIAL_TO_SEARCH = "NV0200";
 
     public static void main(String[] args) throws LibraryDataException {
-        List<LibrarItems> items = new ArrayList<>();
+        List<LibraryItems> items = new ArrayList<>();
         Set<String> authors = new HashSet<>();
-        Map<String, LibrarItems> itemsBySerial = new HashMap<>();
+        Map<String, LibraryItems> itemsBySerial = new HashMap<>();
         Library library = new Library("Public Library", items);
 
         populateBooks(items, authors, itemsBySerial);
@@ -35,7 +35,7 @@ public class Day3 {
 
         printComparison();
     }
-    private static void populateBooks(List<LibrarItems> items, Set<String> authors, Map<String, LibrarItems> map) throws LibraryDataException {
+    private static void populateBooks(List<LibraryItems> items, Set<String> authors, Map<String, LibraryItems> map) throws LibraryDataException {
         for (int i = 1; i <= ITEM_COUNT; i++) {
             Book book = new Book("Book " + i, "Author " + (i % 20), String.format("BK%04d", i), i % 2 == 0);
             items.add(book);
@@ -44,7 +44,7 @@ public class Day3 {
         }
     }
 
-    private static void populateNovels(List<LibrarItems> items, Set<String> authors, Map<String, LibrarItems> map) {
+    private static void populateNovels(List<LibraryItems> items, Set<String> authors, Map<String, LibraryItems> map) {
         for (int i = 1; i <= ITEM_COUNT; i++) {
             Novel novel = new Novel("Novel " + i, "Author " + (i % 20), String.format("NV%04d", i), i % 2 != 0);
             items.add(novel);
@@ -59,7 +59,7 @@ public class Day3 {
         System.out.println("Total Authors : " + authors.size());
     }
 
-    private static void addBook(List<LibrarItems> items, Set<String> authors, Map<String, LibrarItems> map, Book book) {
+    private static void addBook(List<LibraryItems> items, Set<String> authors, Map<String, LibraryItems> map, Book book) {
         String serial = book.getSr_no();
         if (serial == null || serial.isBlank()) {
             throw new InvalidSerialException("Cannot add a book with a blank serial number.");
@@ -73,12 +73,12 @@ public class Day3 {
         map.put(serial, book);
     }
 
-    private static void removeBySerial(List<LibrarItems> items, Map<String, LibrarItems> map, String serial) {
+    private static void removeBySerial(List<LibraryItems> items, Map<String, LibraryItems> map, String serial) {
         if (serial == null || serial.isBlank()) {
             System.err.println("Cannot remove: serial number is missing.");
             return;
         }
-        LibrarItems removed = map.remove(serial);
+        LibraryItems removed = map.remove(serial);
         if (removed != null) {
             items.remove(removed);
             System.out.println(serial + " Removed Successfully.");
@@ -87,13 +87,13 @@ public class Day3 {
         }
     }
 
-    private static void searchLinear(List<LibrarItems> items, String serial) {
+    private static void searchLinear(List<LibraryItems> items, String serial) {
         System.out.println("\nLinear Search:");
         if (serial == null || serial.isBlank()) {
             System.err.println("Cannot search: serial number is missing.");
             return;
         }
-        for (LibrarItems item : items) {
+        for (LibraryItems item : items) {
             String itemSerial = (item instanceof Book b) ? b.getSr_no()
                     : (item instanceof Novel n) ? n.getSr_no() : null;
             if (serial.equals(itemSerial)) {
@@ -104,13 +104,13 @@ public class Day3 {
         System.err.println("Item Not Found: " + serial);
     }
 
-    private static void searchByMap(Map<String, LibrarItems> map, String serial) {
+    private static void searchByMap(Map<String, LibraryItems> map, String serial) {
         System.out.println("\nHashMap Search:");
         if (serial == null || serial.isBlank()) {
             System.err.println("Cannot search: serial number is missing.");
             return;
         }
-        LibrarItems result = map.get(serial);
+        LibraryItems result = map.get(serial);
         if (result != null) {
             result.ShowDetail();
         } else {

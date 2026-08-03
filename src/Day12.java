@@ -4,7 +4,7 @@ import java.util.List;
 public class Day12 {
 
     public static void main(String[] args) throws LibraryDataException {
-        List<LibrarItems> items = new ArrayList<>();
+        List<LibraryItems> items = new ArrayList<>();
 
         try {
             items.add(new Book(null, "James Clear", "BK101", true));
@@ -26,7 +26,7 @@ public class Day12 {
             return;
         }
         System.out.println("===== " + library.getName() + " =====\n");
-        for (LibrarItems item : library.getList()) {
+        for (LibraryItems item : library.getList()) {
             if (item == null) {
                 System.err.println("Skipping a null item in the library list.");
                 continue;

@@ -1,4 +1,4 @@
-record BookRec(String title, String author, String serialNo, boolean available) implements LibrarItems, Comparable<BookRec> {
+record BookRec(String title, String author, String serialNo, boolean available) implements LibraryItems, Comparable<BookRec> {
 
     public BookRec {
         if (serialNo.length() != 6) {
