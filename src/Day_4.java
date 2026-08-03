@@ -11,8 +11,11 @@ public class Day_4 {
         List<Book> books = generateBooks();
         printBooksByAuthor(books);
         sortBySerial(books);
+        sortBySerialUsingStreams(books);
         sortByTitle(books);
+        sortByTitleUsingStreams(books);
         sortByAuthor(books);
+        sortByAuthorUsingStreams(books);
     }
 
     private static List<Book> generateBooks() {
@@ -37,6 +40,13 @@ public class Day_4 {
         System.out.println("===== Sorted by Serial Number =====");
         printPreview(books);
     }
+    public static void sortBySerialUsingStreams(List<Book> books){
+        books = books.stream()
+                .sorted((b1,b2) -> b1.getSr_no().compareTo(b2.getSr_no()))
+                .toList();
+        System.out.println("===== Sorted by Serial Number using streams and lambda =====");
+        printPreview(books);
+    }
 
     private static void sortByTitle(List<Book> books) {
         books.sort(new TitleComparator());
@@ -44,10 +54,27 @@ public class Day_4 {
         printPreview(books);
     }
 
+    public static void sortByTitleUsingStreams(List<Book> books){
+        books = books.stream()
+                .sorted((b1,b2) -> b1.getTitle().compareTo(b2.getTitle()))
+                .toList();
+        System.out.println("===== Sorted by Title using streams and lambda =====");
+        printPreview(books);
+
+    }
+
     private static void sortByAuthor(List<Book> books) {
         books.sort(new AuthorComparator());
         System.out.println("===== Sorted by Author =====");
         printPreview(books);
+    }
+    public static void sortByAuthorUsingStreams(List<Book> books){
+        books = books.stream()
+                .sorted((b1,b2 ) -> b1.getAuthor().compareTo(b2.getAuthor()))
+                .toList();
+        System.out.println("===== Sorted by Author using streams and lambda =====");
+        printPreview(books);
+
     }
 
     private static void printPreview(List<Book> books) {
