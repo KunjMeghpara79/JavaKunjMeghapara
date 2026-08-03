@@ -2,9 +2,9 @@ import java.util.List;
 
 class LibraryRec {
     private String name;
-    private List<Library_items> items;
+    private List<LibrarItems> items;
 
-    LibraryRec(String name, List<Library_items> items) {
+    LibraryRec(String name, List<LibrarItems> items) {
         this.name = name;
         this.items = items;
     }
@@ -13,7 +13,7 @@ class LibraryRec {
         return name;
     }
 
-    public List<Library_items> getItems() {
+    public List<LibrarItems> getItems() {
         return items;
     }
 }

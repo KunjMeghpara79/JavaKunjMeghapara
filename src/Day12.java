@@ -1,14 +1,13 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Day_1_2 {
+public class Day12 {
 
-    public static void main(String[] args) {
-        List<Library_items> items = new ArrayList<>();
-        Library library = new Library("Public Library", items);
+    public static void main(String[] args) throws LibraryDataException {
+        List<LibrarItems> items = new ArrayList<>();
 
         try {
-            items.add(new Book("Atomic Habits", "James Clear", "BK1001", true));
+            items.add(new Book(null, "James Clear", "BK101", true));
             items.add(new Book("48 Laws of Power", "Robert Greene", "BK1002", false));
             items.add(new Novel("The Diary of a CEO", "Steven Bartlett", "NV2001", true));
             items.add(new Novel("The Laws of Human Nature", "Robert Greene", "NV2002", false));
@@ -17,6 +16,7 @@ public class Day_1_2 {
             throw e;
         }
 
+        Library library = new Library("Public Library", items);
         printLibraryItems(library);
     }
 
@@ -26,7 +26,7 @@ public class Day_1_2 {
             return;
         }
         System.out.println("===== " + library.getName() + " =====\n");
-        for (Library_items item : library.getList()) {
+        for (LibrarItems item : library.getList()) {
             if (item == null) {
                 System.err.println("Skipping a null item in the library list.");
                 continue;

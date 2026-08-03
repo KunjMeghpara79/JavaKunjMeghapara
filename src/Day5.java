@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Day_5 {
+public class Day5 {
 
     public static void main(String[] args) {
-        List<Library_items> items = new ArrayList<>();
+        List<LibrarItems> items = new ArrayList<>();
         LibraryRec library = new LibraryRec("Public Library", items);
 
         BookRec b1 = new BookRec("Atomic Habits", "James Clear", "BK1001", true);
@@ -26,7 +26,7 @@ public class Day_5 {
 
     private static void printLibraryItems(LibraryRec library) {
         System.out.println("===== " + library.getName() + " =====\n");
-        for (Library_items item : library.getItems()) {
+        for (LibrarItems item : library.getItems()) {
             item.ShowDetail();
             System.out.println("------------------------------");
         }

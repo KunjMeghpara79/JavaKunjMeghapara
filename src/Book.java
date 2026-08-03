@@ -1,15 +1,18 @@
-public class Book implements Library_items, Comparable<Book> {
+public class Book implements LibrarItems, Comparable<Book> {
 
     private String title;
     private String author;
     private String sr_no;
     private boolean available;
 
-    public Book(String title, String author, String sr_no, boolean available) {
-
-        if (sr_no.length() != 6) {
-            throw new IllegalArgumentException("Invalid Serial Number!");
+    public Book(String title, String author, String sr_no, boolean available) throws LibraryDataException {
+        if(title == null || author == null || sr_no == null ){
+            throw new LibraryDataException("Data can not be null");
         }
+        if (sr_no.length() != 6) {
+            throw new InvalidSerialException("Invalid Serial Number!");
+        }
+
 
         this.title = title;
         this.author = author;

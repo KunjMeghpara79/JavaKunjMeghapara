@@ -1,13 +1,12 @@
-import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Day_4 {
+public class Day4 {
 
     private static final int ITEM_COUNT = 250;
     private static final int PREVIEW_COUNT = 10;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws LibraryDataException {
         List<Book> books = generateBooks();
         printBooksByAuthor(books);
         sortBySerial(books);
@@ -16,9 +15,10 @@ public class Day_4 {
         sortByTitleUsingStreams(books);
         sortByAuthor(books);
         sortByAuthorUsingStreams(books);
+        partitionBooksByAvailability(books);
     }
 
-    private static List<Book> generateBooks() {
+    private static List<Book> generateBooks() throws LibraryDataException {
         List<Book> books = new ArrayList<>();
         for (int i = 1; i <= ITEM_COUNT; i++) {
             books.add(new Book("Book " + i, "Author " + (i % 20), String.format("BK%04d", i), i % 2 == 0));
@@ -46,6 +46,18 @@ public class Day_4 {
                 .sorted((b1, b2) -> b1.getSr_no().compareTo(b2.getSr_no()))
                 .toList();
         printPreview(books);
+    }
+
+    public static void partitionBooksByAvailability(List<Book> books) {
+
+        Map<Boolean, List<Book>> result = books.stream()
+                .collect(Collectors.partitioningBy(Book::isAvailable));
+
+        System.out.println("----------------Available Books----------------");
+        result.get(true).forEach(Book::ShowDetail);
+
+        System.out.println("\n----------------Unavailable Books----------------");
+        result.get(false).forEach(Book::ShowDetail);
     }
 
     private static void sortByTitle(List<Book> books) {

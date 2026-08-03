@@ -6,7 +6,4 @@ public class LibraryDataException extends IOException {
         super(message);
     }
 
-    public LibraryDataException(String message, Throwable cause) {
-        super(message, cause);
-    }
 }
