@@ -37,14 +37,14 @@ public class Day_4 {
 
     private static void sortBySerial(List<Book> books) {
         Collections.sort(books);
+        // They will be automatically sorted by their serial number as the natural order of books is defined in Book class by implementing the Comparable and overriding compareTo method
         System.out.println("===== Sorted by Serial Number =====");
         printPreview(books);
     }
-    public static void sortBySerialUsingStreams(List<Book> books){
+    public static void sortBySerialUsingStreams(List<Book> books) {
         books = books.stream()
-                .sorted((b1,b2) -> b1.getSr_no().compareTo(b2.getSr_no()))
+                .sorted((b1, b2) -> b1.getSr_no().compareTo(b2.getSr_no()))
                 .toList();
-        System.out.println("===== Sorted by Serial Number using streams and lambda =====");
         printPreview(books);
     }
 
@@ -52,27 +52,25 @@ public class Day_4 {
         books.sort(new TitleComparator());
         System.out.println("===== Sorted by Title =====");
         printPreview(books);
+
     }
 
     public static void sortByTitleUsingStreams(List<Book> books){
         books = books.stream()
                 .sorted((b1,b2) -> b1.getTitle().compareTo(b2.getTitle()))
                 .toList();
-        System.out.println("===== Sorted by Title using streams and lambda =====");
         printPreview(books);
 
     }
 
     private static void sortByAuthor(List<Book> books) {
         books.sort(new AuthorComparator());
-        System.out.println("===== Sorted by Author =====");
         printPreview(books);
     }
-    public static void sortByAuthorUsingStreams(List<Book> books){
+    public static void sortByAuthorUsingStreams(List<Book> books) {
         books = books.stream()
-                .sorted((b1,b2 ) -> b1.getAuthor().compareTo(b2.getAuthor()))
+                .sorted((b1, b2) -> b1.getAuthor().compareTo(b2.getAuthor()))
                 .toList();
-        System.out.println("===== Sorted by Author using streams and lambda =====");
         printPreview(books);
 
     }
