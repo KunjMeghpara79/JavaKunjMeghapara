@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.*;
 
+
  class sample {
    public static void main() throws ScriptException {
 //       System.out.println("This is sample calculator :   ");
@@ -22,6 +23,8 @@ import java.util.stream.*;
        opt.ifPresent(nam -> {
            System.out.println("name is available\n\n\n");
        });
+
+
 
     }
 }
