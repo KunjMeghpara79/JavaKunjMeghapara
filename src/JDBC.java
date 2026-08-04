@@ -33,7 +33,8 @@ public class JDBC {
                             city
             );
         }
-        stmt.close();;
+        stmt.close();
         con.close();
     }
 }
+
