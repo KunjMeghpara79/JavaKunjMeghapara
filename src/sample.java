@@ -23,8 +23,5 @@ import java.util.stream.*;
        opt.ifPresent(nam -> {
            System.out.println("name is available\n\n\n");
        });
-
-
-
     }
 }

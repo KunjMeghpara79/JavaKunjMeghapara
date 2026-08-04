@@ -1,4 +1,3 @@
-
 public class Conquerency {
     static Count c = new Count();
     static class t1 implements Runnable{
