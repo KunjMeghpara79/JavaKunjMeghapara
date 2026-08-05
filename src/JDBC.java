@@ -33,6 +33,26 @@ public class JDBC {
                             city
             );
         }
+        stmt.execute("UPDATE Persons " +
+                "SET Address = '66 sentosa greens' " +
+                "where PersonID = 60");
+
+        ResultSet rs1 = stmt.executeQuery("Select * from Persons where PersonID = 60");
+        while (rs1.next()){
+            int personId = rs1.getInt("PersonID");
+            String lastName = rs1.getString("LastName");
+            String firstName = rs1.getString("FirstName");
+            String address = rs1.getString("Address");
+            String city = rs1.getString("City");
+
+            System.out.println(
+                    personId + " " +
+                            lastName + " " +
+                            firstName + " " +
+                            address + " " +
+                            city
+            );
+        }
         stmt.close();
         con.close();
     }
