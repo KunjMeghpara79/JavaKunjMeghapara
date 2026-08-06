@@ -16,6 +16,7 @@ public class Jdbc {
         // which needs to be closed will be closed autometically.
 
         try(Scanner sc = new Scanner(System.in);
+            //Any object declared inside these parentheses must implement the AutoCloseable interface
             Connection con = DriverManager.getConnection(url,username,password);
             PreparedStatement pstmt = con.prepareStatement("INSERT INTO Persons VALUES (?,?,?,?,?)");
         ) {
