@@ -13,7 +13,7 @@ class Sample {
 
        String name = null;
        Optional<String> opt = Optional.ofNullable(name);
-// Offnullable methods let the variable contain the null value by helping to prevent the null pointer exception
+       // Offnullable methods let the variable contain the null value by helping to prevent the null pointer exception
        opt.ifPresent(nam -> {
            System.out.println("name is available\n\n\n");
        });
