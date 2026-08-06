@@ -1,9 +1,9 @@
 public class Book implements LibraryItems, Comparable<Book> {
 
-    private String title;
-    private String author;
-    private String srNo;
-    private boolean available;
+    private final String title;
+    private final String author;
+    private final String srNo;
+    private final boolean available;
 
     public Book(String title, String author, String srNo, boolean available) throws LibraryDataException {
         if(title == null || author == null || srNo == null ){
