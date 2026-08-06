@@ -2,27 +2,27 @@ public class Book implements LibraryItems, Comparable<Book> {
 
     private String title;
     private String author;
-    private String sr_no;
+    private String srNo;
     private boolean available;
 
-    public Book(String title, String author, String sr_no, boolean available) throws LibraryDataException {
-        if(title == null || author == null || sr_no == null ){
+    public Book(String title, String author, String srNo, boolean available) throws LibraryDataException {
+        if(title == null || author == null || srNo == null ){
             throw new LibraryDataException("Data can not be null");
         }
-        if (sr_no.length() != 6) {
+        if (srNo.length() != 6) {
             throw new InvalidSerialException("Invalid Serial Number!");
         }
 
 
         this.title = title;
         this.author = author;
-        this.sr_no = sr_no;
+        this.srNo = srNo;
         this.available = available;
     }
 
     @Override
     public int compareTo(Book other) {
-        return this.sr_no.compareTo(other.sr_no);
+        return this.srNo.compareTo(other.srNo);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class Book implements LibraryItems, Comparable<Book> {
         System.out.println("Book Details are as follows...");
         System.out.println("Book Name      : " + title);
         System.out.println("Author Name    : " + author);
-        System.out.println("Serial Number  : " + sr_no);
+        System.out.println("Serial Number  : " + srNo);
         System.out.println("Status         : " + (available ? "Available" : "Not Available"));
     }
 
@@ -43,7 +43,7 @@ public class Book implements LibraryItems, Comparable<Book> {
     }
 
     public String getSr_no() {
-        return sr_no;
+        return srNo;
     }
 
     public boolean isAvailable() {

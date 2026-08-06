@@ -6,7 +6,7 @@ class Count {
     public synchronized void decreament(){
         for(int i = 0;i<100000;i++) c--;
     }
-    public int getcount(){
+    public int getCount(){
         return c;
     }
 }
