@@ -22,7 +22,7 @@ public class Conquerency {
         t2.start();
 
         //t1.join means the main thread will be in waiting state until the t1 completes its execution and go in dead state. same for t2
-        // if we do not use these joins methods then both threads are free to be terminated anytime and
+        // if we do not use these join methods then both threads are free to be terminated anytime and
         // that will lead to race condition even if we have synchronized it.
         t1.join();
         t2.join();
